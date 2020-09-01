@@ -1,0 +1,79 @@
+﻿@model ParkingAdminVM
+@{
+    ViewData["Title"] = "PrikazOSI";
+}
+
+
+
+<!--/Info boxes-->
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Parking lokacije sa mjestima za osobe sa invaliditetom</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myTable" class="table table-bordered table-striped table-responsive  w-100 d-block d-md-table">
+                <thead>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Adresa</th>
+                        <th>Slobodno mjesta</th>
+                        <th>Latitude / Longitude</th>
+                        <th>Dostupan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.Parkinzi)
+                    {
+                        <tr>
+                            <td>@x.Naziv</td>
+                            <td>@x.Adresa, @x.Zip</td>
+                            <td><span id="idSlobodni">@x.BrojMjesta_slobodno/@x.BrojMjesta</span></td>
+                            <td>@x.Latitude @x.longitude</td>
+                            @if (x.Dostupan)
+                            {
+                                <td><a href="/Admin/Home/ParkingNijeDostupan/@x.ParingId" ajax-pozix="da" ajax-rezultat="ajaxDiv" class="btn btn-outline-light">DA</a></td>
+                            }
+                            else
+                            {
+                                <td><a href="/Admin/Home/ParkingDostupan/@x.ParingId" ajax-pozix="da" ajax-rezultat="ajaxDiv" class="btn btn-light">NE</a></td>
+                            }
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+
+<script>
+    $(function () {
+
+        $("a[ajax-poziv='da']").click(function (event) {
+            $(this).attr("ajax-poziv", "dodan");
+            event.preventDefault();
+            var urlZaPoziv1 = $(this).attr("ajax-url");
+            var urlZaPoziv2 = $(this).attr("href");
+            var divZaRezultat = $(this).attr("ajax-rezultat");
+
+            var urlZaPoziv;
+
+            if (urlZaPoziv1 instanceof String)
+                urlZaPoziv = urlZaPoziv1;
+            else
+                urlZaPoziv = urlZaPoziv2;
+
+            $.get(urlZaPoziv, function (data, status) {
+                $("#" + divZaRezultat).html(data);
+            });
+        });
+
+
+    });
+
+
+</script>

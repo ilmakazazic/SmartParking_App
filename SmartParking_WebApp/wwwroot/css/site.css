@@ -1,0 +1,224 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+a:hover {
+    color: gray;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+#wide-div {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: 400px;
+}
+
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 50%;
+    position: relative;
+    height: 400px;
+}
+
+#mapid {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.popupDiv{
+    width: 270px;
+
+}
+.popupDiv p {
+    margin: 0 !important;
+
+}
+
+.mjestaDiv{
+    text-align: right;
+
+}
+.mjestaDiv h3{
+    word-spacing: 30px;
+}
+
+.opacity{
+    opacity: 0.5;
+}
+
+#idSlobodni {
+    color: #78C2AD;
+}
+
+#idSlobodniOSI {
+    color: dodgerblue;
+}
+
+
+.img-responsive {
+    width: 100%;
+    max-width: 500px;
+    max-height: 400px;
+}
+
+.center-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.c-of-img {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    max-height: 400px;
+}
+
+.img-up {
+    position: absolute;
+    top: 50px;
+}
+.img-bottom {
+    position: absolute;
+    bottom: 30px;
+}
+
+.img1-d {
+    position: absolute;
+    left: 20%;
+    top: 50px;
+}
+
+.img2-d {
+    position: absolute;
+    left: 55%;
+    top: 50px;
+}
+
+.img3-d {
+    position: absolute;
+    right: 5%;
+    top: 50px;
+}
+
+
+
+.img4-d {
+    position: absolute;
+    left: 20%;
+    bottom: 50px;
+}
+
+.img5-d {
+    position: absolute;
+    left: 55%;
+    bottom: 50px;
+}
+
+.img6-d {
+    position: absolute;
+    right: 5%;
+    bottom: 50px;
+}
+
+.myClickable {
+    cursor: pointer;
+}
+
+/*.img1 {
+    position: absolute;
+    left: 13%;
+    top: 50px;
+}
+
+.img2 {
+    position: absolute;
+    left: 48%;
+    top: 50px;
+}
+
+.img3 {
+    position: absolute;
+    left: 80%;
+    top: 50px;
+}
+
+.img4 {
+    position: absolute;
+    left: 13%;
+    bottom: 30px;
+}
+
+.img5 {
+    position: absolute;
+    left: 48%;
+    bottom: 30px;
+}
+
+.img6 {
+    position: absolute;
+    left: 83%;
+    bottom: 30px;
+}*/

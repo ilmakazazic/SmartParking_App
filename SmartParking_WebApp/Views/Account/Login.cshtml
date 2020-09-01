@@ -1,0 +1,37 @@
+﻿@model LoginVM
+@{
+    ViewData["Title"] = "Login";
+    string error_poruka = (string)TempData["error_poruka"];
+}
+
+
+<div class="col-md-12">
+
+    <h1>Login</h1>
+    <form asp-action="Login">
+
+        <div class="form-group">
+            <label>Username: </label>
+            <div>
+                <input asp-for="Username" class="form-control" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Password: </label>
+            <div>
+                <input type="password" asp-for="Password" class="form-control" />
+            </div>
+        </div>
+        <input type="submit" value="Logiraj se" class="btn btn-success form-control" />
+    </form>
+    
+    @if (error_poruka != null)
+    {
+        <br />
+        <div class="alert alert-danger">
+            @error_poruka
+        </div>
+    }
+</div>

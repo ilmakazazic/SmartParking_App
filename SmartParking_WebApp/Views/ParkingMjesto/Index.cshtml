@@ -1,0 +1,120 @@
+﻿@model MjestoVM
+@{
+    ViewData["Title"] = "Mjesta";
+    var red = 3;
+    var up = 13;
+    var bottom = 13;
+
+    var counter2 = 0;
+}
+    <div class="container-md">
+        <div class="row">
+            <div class="col">
+                <h4> Naziv: @Model.Naziv</h4>
+                <br />
+                <h4> Adresa: @Model.Adresa</h4>
+                <br />
+            </div>
+            <div class="col">
+                <h4>Broj slobodnih mjesta</h4>
+                <h4 id="idSlobodni" class="text-center"> <b>@Model.BrojMjesta_slobodno <span class="opacity">/ @Model.BrojMjesta</span></b></h4>
+                <h4>Broj slobodnih mjesta za osobe sa invaliditetom</h4>
+                <h4 id="idSlobodniOSI" class="text-center"><b>@Model.BrojMjesta_OSI_slobodno <span class="opacity">/ @Model.BrojMjesta_OSI</span> </b> </h4>
+
+            </div>
+        </div>
+    </div>
+
+<br />
+<br />
+
+<div class="c-of-img center-img">
+    <img src="~/images/parking.png" data-holder-rendered="true" class="img-responsive center-img" />
+    <div>
+
+        @foreach (var x in Model.Mjesta)
+        {
+
+            if (x.Zauzeto == true)
+            {
+                if (red != 0)
+                {
+                    <div class="img-up" style="left: @up%;">
+                        <img src="~/images/red.png" data-holder-rendered="true" />
+                        <p>@x.Oznaka</p>
+                    </div>
+                    red--;
+                    up += 35;
+                }
+                else
+                {
+                    <div class="img-bottom" style="left: @bottom%;">
+                        <img src="~/images/red.png" data-holder-rendered="true" />
+                        <p>@x.Oznaka</p>
+                    </div>
+                    bottom += 35;
+
+                }
+
+            }
+            else
+            {
+                if (red != 0)
+                {
+                    <div class="img-up" style="left: @up%;">
+                        <img src="~/images/green.png" data-holder-rendered="true" />
+                        <p>@x.Oznaka</p>
+                    </div>
+                    red--;
+                    up += 35;
+                }
+                else
+                {
+                    <div class="img-bottom" style="left: @bottom%;">
+                        <img src="~/images/green.png" data-holder-rendered="true" />
+                        <p>@x.Oznaka</p>
+                    </div>
+                    bottom += 35;
+
+                }
+
+
+            }
+        }
+
+
+        @*@foreach (var x in Model.Mjesta)
+            {
+                if (x.Zauzeto == true )
+                {
+
+                    <div class="img@(counter++)">
+                        <img src="~/images/red.png" data-holder-rendered="true" />
+                        <p>@x.Oznaka</p>
+                    </div>
+
+                }
+                else
+                {
+                    <div class="img@(counter++)">
+                        <img src="~/images/green.png" data-holder-rendered="true" />
+                        <p>@x.Oznaka</p>
+                    </div>
+
+                }
+            }*@
+
+        @foreach (var x in Model.Mjesta)
+        {
+            counter2++;
+            if (x.OSI_mjesto == true)
+            {
+                <img src="~/images/disabled.png" data-holder-rendered="true" class="img@(counter2)-d" />
+
+            }
+        }
+
+    </div>
+
+</div>
+<br />

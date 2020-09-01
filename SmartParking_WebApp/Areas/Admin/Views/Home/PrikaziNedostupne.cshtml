@@ -1,0 +1,47 @@
+﻿@model ParkingAdminVM
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Nedostupne parking lokacije</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myTable" class="table table-bordered table-striped table-responsive  w-100 d-block d-md-table">
+                <thead>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Adresa</th>
+                        <th>Slobodno mjesta</th>
+                        <th>Osobe sa invaliditetom</th>
+                        <th>Latitude / Longitude</th>
+                        <th>Dostupan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.Parkinzi)
+                    {
+                    <tr>
+                        <td>@x.Naziv</td>
+                        <td>@x.Adresa, @x.Zip</td>
+                        <td><span id="idSlobodni">@x.BrojMjesta_slobodno/@x.BrojMjesta</span></td>
+                        <td><span id="idSlobodniOSI">@x.BrojMjesta_OSI_slobodno/@x.BrojMjesta_OSI</span></td>
+                        <td>@x.Latitude @x.longitude</td>
+                        @if (x.Dostupan)
+                        {
+                            <td><a href="/Admin/Home/ParkingNijeDostupan/@x.ParingId" ajax-pozix="da" ajax-rezultat="ajaxDiv" class="btn btn-outline-light">DA</a></td>
+                        }
+                        else
+                        {
+                            <td><a href="/Admin/Home/ParkingDostupan/@x.ParingId" ajax-pozix="da" ajax-rezultat="ajaxDiv" class="btn btn-light">NE</a></td>
+                        }
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
