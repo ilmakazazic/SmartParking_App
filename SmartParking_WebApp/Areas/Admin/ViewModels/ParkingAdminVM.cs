@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SmartParking_WebApp.Areas.Admin.ViewModels
 {
@@ -23,11 +20,8 @@ namespace SmartParking_WebApp.Areas.Admin.ViewModels
             public int BrojMjesta { get; set; }
             public int BrojMjesta_OSI { get; set; } //OSI-Osoba sa invaliditetom
             public bool Dostupan { get; set; }
-
             public int BrojMjesta_slobodno { get; set; }
             public int BrojMjesta_OSI_slobodno { get; set; }
-
-
         }
     }
 }

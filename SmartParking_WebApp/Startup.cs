@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -28,8 +25,7 @@ namespace SmartParking_WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MyContext>(options =>
-            options.UseSqlServer("Server=.;Database=SmartParking;Trusted_Connection=True;MultipleActiveResultSets=True"));
-
+            options.UseSqlServer(Configuration.GetConnectionString("cs1")));
             services.AddControllersWithViews();
             
             //Auth
@@ -41,11 +37,7 @@ namespace SmartParking_WebApp
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 3;
                 options.Password.RequiredUniqueChars = 1;
-
                 options.User.RequireUniqueEmail = false;
-
-                //x.Password.RequireUppercase = false; => other condition for identity
-
             }).AddEntityFrameworkStores<MyContext>().AddDefaultTokenProviders();
             services.ConfigureApplicationCookie(options =>
             {
@@ -53,8 +45,6 @@ namespace SmartParking_WebApp
                 options.LoginPath = "/Account/Login";
                 options.AccessDeniedPath = "/Account/AccessDenied";
             });
-
-
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddProgressiveWebApp();
         }
@@ -98,7 +88,6 @@ namespace SmartParking_WebApp
 
             app.UseMvc(routes =>
             {
-
                 routes.MapAreaRoute(
                    name: "Admin",
                    areaName: "Admin",
@@ -109,28 +98,6 @@ namespace SmartParking_WebApp
                         template: "{controller=Home}/{action=Index}/{id?}");
 
             });
-
-            
-      
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            //    endpoints.MapAreaControllerRoute(
-            //        name: "Admin",
-            //        areaName: "Admin",
-            //        pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
-
-            //});
-            //app.UseEndpoints(endpoints =>
-            //{
-
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller=Home}/{action=Index}/{id?}");
-            //});
         }
     }
 }

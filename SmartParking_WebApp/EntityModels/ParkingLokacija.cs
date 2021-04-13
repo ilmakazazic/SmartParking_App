@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SmartParking_WebApp.EntityModels
+﻿namespace SmartParking_WebApp.EntityModels
 {
     public class ParkingLokacija
     {
@@ -16,8 +11,5 @@ namespace SmartParking_WebApp.EntityModels
         public int BrojMjesta { get; set; }
         public int BrojMjesta_OSI { get; set; } //OSI-Osoba sa invaliditetom
         public bool Dostupan { get; set; }
-        
-
-
     }
 }

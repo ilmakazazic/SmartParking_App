@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SmartParking_WebApp.Areas.Admin.ViewModels
 {
@@ -25,6 +21,5 @@ namespace SmartParking_WebApp.Areas.Admin.ViewModels
         public bool Dostupan { get; set; }
         [Required(ErrorMessage = "Obavezno polje!")]
         public string OznakaZaMjesta { get; set; }
-
     }
 }

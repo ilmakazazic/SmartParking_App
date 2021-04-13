@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using SmartParking_WebApp.ArduinoHelper;
 using SmartParking_WebApp.EF;
-using SmartParking_WebApp.EntityModels;
 using SmartParking_WebApp.Models;
 using SmartParking_WebApp.ViewModels;
 
@@ -17,7 +13,6 @@ namespace SmartParking_WebApp.Controllers
     {
         private MyContext _context;
         private readonly SerialPortConnector _serialPortConnector;
-
 
         public HomeController(MyContext context)
         {
@@ -32,7 +27,6 @@ namespace SmartParking_WebApp.Controllers
 
             try
             {
-
                 String s1 = _serialPortConnector.Receive();
 
                 if (s1 != null || s1.Length != 6)
@@ -56,12 +50,8 @@ namespace SmartParking_WebApp.Controllers
                         {
                             break;
                         }
-
                         brojac++;
-
-
                     }
-
 
                     brojac = 1;
                     foreach (var i in input2)
@@ -78,20 +68,11 @@ namespace SmartParking_WebApp.Controllers
                             break;
                         }
                         brojac++;
-
-
                     }
-
                     _context.SaveChanges();
-
-
-
                 }
             }
-            catch 
-            {
-                
-            }
+            catch {}
 
 
             ParkingVM vm = new ParkingVM()
@@ -112,7 +93,6 @@ namespace SmartParking_WebApp.Controllers
 
                 }).ToList()
             };
-
             return View(vm);
         }
 

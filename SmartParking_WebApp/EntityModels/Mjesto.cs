@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SmartParking_WebApp.EntityModels
+﻿namespace SmartParking_WebApp.EntityModels
 {
     public class Mjesto
     {
@@ -13,6 +8,5 @@ namespace SmartParking_WebApp.EntityModels
         public bool Zauzeto { get; set; }
         public int ParkingLokacijaId { get; set; }
         public ParkingLokacija ParkingLokacija { get; set; }
-
     }
 }

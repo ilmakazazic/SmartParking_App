@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SmartParking_WebApp.ViewModels
 {
@@ -23,7 +20,5 @@ namespace SmartParking_WebApp.ViewModels
             public bool Dostupan { get; set; }
 
         }
-
-
     }
 }

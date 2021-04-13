@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO.Ports;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SmartParking_WebApp.ArduinoHelper
 {
@@ -10,7 +7,6 @@ namespace SmartParking_WebApp.ArduinoHelper
     {
         private readonly int _boundRate = 115200;
         private readonly string _portName = "COM3";
-
         public String Receive()
         {
             var serialPort = new SerialPort(_portName, _boundRate);

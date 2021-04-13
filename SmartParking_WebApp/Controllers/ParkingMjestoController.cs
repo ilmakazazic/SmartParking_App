@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SmartParking_WebApp.ArduinoHelper;
 using SmartParking_WebApp.EF;
@@ -24,7 +22,6 @@ namespace SmartParking_WebApp.Controllers
             ParkingLokacija parking = _context.ParkingLokacija.Find(ParkingID);
             try
             {
-               
                 String s1 = _serialPortConnector.Receive();
                 if (s1 != null || s1.Length != 6)
                 {
@@ -52,8 +49,7 @@ namespace SmartParking_WebApp.Controllers
 
 
                     }
-
-
+                    
                     brojac = 1;
                     foreach (var i in input2)
                     {
@@ -69,20 +65,12 @@ namespace SmartParking_WebApp.Controllers
                             break;
                         }
                         brojac++;
-
-
                     }
 
                     _context.SaveChanges();
-
-
-
                 }
             }
-            catch 
-            {
-
-            }
+            catch {}
            
             MjestoVM vm = new MjestoVM()
             {
@@ -104,6 +92,5 @@ namespace SmartParking_WebApp.Controllers
             };
             return View(vm);
         }
-
     }
 }

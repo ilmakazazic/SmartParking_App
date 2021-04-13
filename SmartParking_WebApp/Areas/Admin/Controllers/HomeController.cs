@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SmartParking_WebApp.ArduinoHelper;
 using SmartParking_WebApp.Areas.Admin.ViewModels;
 using SmartParking_WebApp.EF;
 using SmartParking_WebApp.EntityModels;
@@ -17,21 +13,17 @@ namespace SmartParking_WebApp.Areas.Admin.Controllers
     {
         private MyContext _context;
 
-
         public HomeController(MyContext context)
         {
             _context = context;
-
         }
 
         public IActionResult Index()
         {
-
             var vm = new ParkingAdminVM()
             {
                 BrParkinga = _context.ParkingLokacija.Count(),
                 BrParkinga_OSi = _context.ParkingLokacija.Where(c=>c.BrojMjesta_OSI>0).Count(),
-
                 Parkinzi = _context.ParkingLokacija.Select(x => new ParkingAdminVM.Row()
                 {
                     Naziv = x.Naziv,
@@ -47,10 +39,10 @@ namespace SmartParking_WebApp.Areas.Admin.Controllers
                     BrojMjesta_OSI_slobodno = _context.Mjesto.Where(c => c.ParkingLokacijaId == x.Id && c.Zauzeto == false && c.OSI_mjesto == true).Count(),
 
                 }).ToList()
-
             };
             return View(vm);
         }
+
         [HttpGet]
         public IActionResult PrikazOSI()
         {
@@ -79,7 +71,6 @@ namespace SmartParking_WebApp.Areas.Admin.Controllers
         {
             var vm = new ParkingAdminVM()
             {
-
                 Parkinzi = _context.ParkingLokacija.Where(c=>c.Dostupan==false).Select(x => new ParkingAdminVM.Row()
                 {
                     Naziv = x.Naziv,
@@ -98,20 +89,14 @@ namespace SmartParking_WebApp.Areas.Admin.Controllers
 
                 }).ToList()
             };
-
             return PartialView(vm);
-
         }
 
-
-
-    [HttpGet]
+        [HttpGet]
         public IActionResult Dodaj()
         {
-
            return View();
         }
-
 
         [HttpPost]
         public IActionResult Dodaj(DodajParkingVM vm)
@@ -129,14 +114,12 @@ namespace SmartParking_WebApp.Areas.Admin.Controllers
                     Naziv = vm.Naziv,
                     Zip = vm.Zip
                 };
-
                _context.ParkingLokacija.Add(novaLokacija);
                _context.SaveChanges();
-
                var parking = _context.ParkingLokacija
                    .Where(c => c.longitude == double.Parse(vm.longitude) && c.Latitude == double.Parse(vm.Latitude)).FirstOrDefault();
-
-                int brojac = 1;
+               int brojac = 1;
+               
                for (int i = 0; i < vm.BrojMjesta-vm.BrojMjesta_OSI; i++)
                {
                    Mjesto novoMjesto = new Mjesto()
@@ -150,6 +133,7 @@ namespace SmartParking_WebApp.Areas.Admin.Controllers
                    brojac++;
                    _context.SaveChanges();
                }
+               
                for (int i = 0; i < vm.BrojMjesta_OSI; i++)
                {
                    Mjesto novoMjesto = new Mjesto()
@@ -163,14 +147,8 @@ namespace SmartParking_WebApp.Areas.Admin.Controllers
                    brojac++;
                    _context.SaveChanges();
                }
-
-
-
-
-                return RedirectToAction(nameof(Index));
-
+               return RedirectToAction(nameof(Index));
             }
-
             return View();
         }
 
@@ -179,7 +157,6 @@ namespace SmartParking_WebApp.Areas.Admin.Controllers
         {
             ParkingLokacija vm = _context.ParkingLokacija.Find(ParkingID);
             var m = _context.Mjesto.Where(c => c.ParkingLokacijaId == ParkingID).ToList();
-
             UrediParkingVM model = new UrediParkingVM()
             {
                 Id = vm.Id,
@@ -193,7 +170,6 @@ namespace SmartParking_WebApp.Areas.Admin.Controllers
                 OznakaZaMjesta = m[1].Oznaka,
                 Zip = vm.Zip
             };
-            
             return View(model);
         }
 
@@ -256,8 +232,6 @@ namespace SmartParking_WebApp.Areas.Admin.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-
-
             return View();
         }
 
@@ -276,6 +250,5 @@ namespace SmartParking_WebApp.Areas.Admin.Controllers
             _context.SaveChanges();
             return Redirect("/Admin/Home/Index/" + p.Id);
         }
-
     }
 }

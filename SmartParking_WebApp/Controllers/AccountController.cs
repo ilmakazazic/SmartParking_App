@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace SmartParking_WebApp.Controllers
 {
@@ -22,7 +18,6 @@ namespace SmartParking_WebApp.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-
             return View();
         }
 
@@ -42,28 +37,19 @@ namespace SmartParking_WebApp.Controllers
             }
             TempData["error_poruka"] = "pogrešan username ili password";
             return View("Login");
-
-
         }
 
         [HttpPost]
         public async Task<IActionResult> Logut(string returnUrl = null)
         {
             await _singInManager.SignOutAsync();
-
             return RedirectToAction("Login", "Account");
-
         }
 
         [HttpGet]
         public IActionResult AccessDenied()
         {
-
             return View();
         }
-
-
-
-
     }
 }
