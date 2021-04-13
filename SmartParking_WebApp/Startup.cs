@@ -24,8 +24,7 @@ namespace SmartParking_WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MyContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("cs1")));
+            services.AddDbContext<MyContext>();
             services.AddControllersWithViews();
             
             //Auth
